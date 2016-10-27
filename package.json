@@ -1,5 +1,5 @@
 {
-  "name": "Meteor-Ionic2-Starter",
+  "name": "COGS120Food",
   "version": "0.0.1",
   "scripts": {
     "start": "npm-run-all build:* --parallel watch:* meteor",
