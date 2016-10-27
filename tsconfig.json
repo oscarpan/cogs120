@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "sourceMap": true
+  },
+  "files": [
+    "node_modules/reflect-metadata/reflect-metadata.d.ts"
+  ]
+}
