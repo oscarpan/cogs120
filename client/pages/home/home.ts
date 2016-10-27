@@ -1,9 +1,9 @@
-import {Page, NavController, ActionSheetController} from 'ionic-angular';
+import {Page, NavController, ActionSheetController, ModalController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 import {WelcomeHeaderComponent} from '../../components/welcome-header/welcome-header';
 import {LanguageSelectComponent} from "../../components/language-select/language-select";
-
+import { AddItemModalPage } from '../../components/modal/additem';
 @Page({
     templateUrl: '/client/pages/home/home.html',
     pipes: [TranslatePipe],
@@ -12,7 +12,7 @@ import {LanguageSelectComponent} from "../../components/language-select/language
 export class HomePage extends MeteorComponent {
     private user:Meteor.User;
 
-    constructor(private nav:NavController, private translate:TranslateService, public actionSheetCtrl: ActionSheetController) {
+    constructor(private nav:NavController, private translate:TranslateService, public actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController) {
         super();
     }
 
@@ -47,5 +47,10 @@ export class HomePage extends MeteorComponent {
         this.autorun(() => {
             this.user = Meteor.user();
         });
+    }
+
+    addFoodItem():void {
+        let modal = this.modalCtrl.create(AddItemModalPage);
+        modal.present();
     }
 }
