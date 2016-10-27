@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Description
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios,android,windows">Cancel</span>
+        <ion-icon color="primary" name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="outer-content">
+  <ion-list>
+      <ion-item>
+          <ion-input placeholder="Food Name" type="text"></ion-input>
+      </ion-item>
+            <ion-item>
+          <ion-input placeholder="Portions" type="text"></ion-input>
+      </ion-item>
+            <ion-item>
+          <ion-input placeholder="Price" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Expiration Date</ion-label>  
+          <ion-datetime displayFormat="DDD/MMM" pickerFormat="DDD MMM" [(ngModel)]="expiration"></ion-datetime>
+      </ion-item>
+      <ion-item>
+         <ion-segment>
+            <ion-segment-button value="counter">
+                Counter
+            </ion-segment-button>
+            <ion-segment-button value="fridge">
+                Refrigerator
+            </ion-segment-button>
+             <ion-segment-button value="freezer">
+                Freezer
+            </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+  </ion-list>
+</ion-content>
