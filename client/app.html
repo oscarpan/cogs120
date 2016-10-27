@@ -8,7 +8,7 @@
         <ion-list>
             <button ion-item *ngFor="let page of pages" (click)="openPage(page)">
                 <ion-icon name="{{page.icon}}"></ion-icon>
-                {{page.title | translate}}
+                {{page.title}}
             </button>
         </ion-list>
     </ion-content>

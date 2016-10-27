@@ -9,6 +9,8 @@ import {Constants} from "../lib/Constants";
 /*********/
 /* Pages */
 import {HomePage} from './pages/home/home';
+import {NewPagePage} from './pages/newpage/newpage';
+import {HistoryPage} from './pages/history/history';
 
 declare var Meteor;
 declare var device;
@@ -52,12 +54,13 @@ class MyApp extends MeteorComponent {
     ngOnInit():void {
 
         // set the nav menu title to the application name from settings.json
-        this.appName = Meteor.settings.public.appName;
+        this.appName = 'TBA Food';
 
         // set our app's pages
         // title references a key in the language JSON to be translated by the translate pipe in the HTML
         this.pages = [
-            {icon: "home", title: "home.title", component: HomePage, rootPage: true},
+            {icon: "home", title: "Home", component: HomePage, rootPage: true},
+            {icon: "clock", title: "History", component: HistoryPage, rootPage: false},
         ];
 
         Tracker.autorun(() => this.zone.run(() => {
