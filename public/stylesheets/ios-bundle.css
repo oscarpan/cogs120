@@ -4846,7 +4846,7 @@ ion-alert {
   border-top-width: 0;
   border-left-width: 0;
   border-style: solid;
-  border-color: #c0c0c0;
+  border-color: #efeff4;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg); }
 
@@ -5507,7 +5507,7 @@ ion-fixed {
           transform: translateZ(0); }
 
 ion-content {
-  background-color: #c0c0c0; }
+  background-color: #efeff4; }
 
 .outer-content {
   background: #efeff4; }
@@ -8512,7 +8512,7 @@ ion-menu > .menu-inner > ion-header > .toolbar.statusbar-padding:first-child ion
 body {
   font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
   font-size: 1.4rem;
-  background-color: #c0c0c0; }
+  background-color: #efeff4; }
 
 ion-menu ion-content {
   background-color: white; }

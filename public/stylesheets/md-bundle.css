@@ -5585,7 +5585,7 @@ ion-fixed {
           transform: translateZ(0); }
 
 ion-content {
-  background-color: #c0c0c0; }
+  background-color: #efeff4; }
 
 [padding],
 [padding] scroll-content {
@@ -7098,7 +7098,7 @@ ion-range:not(.range-has-pin) .range-knob-pressed .range-knob {
 
 .range-knob-min .range-knob {
   border: 2px solid #bdbdbd;
-  background: #c0c0c0; }
+  background: #efeff4; }
 
 .range-knob-min .range-pin,
 .range-knob-min .range-pin::before {
@@ -7116,7 +7116,7 @@ ion-range:not(.range-has-pin) .range-knob-pressed .range-knob {
 
 ion-range[primary] .range-knob-min .range-knob {
   border: 2px solid #bdbdbd;
-  background: #c0c0c0; }
+  background: #efeff4; }
 
 ion-range[primary] .range-knob-min .range-pin,
 ion-range[primary] .range-knob-min .range-pin::before {
@@ -7131,7 +7131,7 @@ ion-range[primary] .range-pin::before {
 
 ion-range[secondary] .range-knob-min .range-knob {
   border: 2px solid #bdbdbd;
-  background: #c0c0c0; }
+  background: #efeff4; }
 
 ion-range[secondary] .range-knob-min .range-pin,
 ion-range[secondary] .range-knob-min .range-pin::before {
@@ -7146,7 +7146,7 @@ ion-range[secondary] .range-pin::before {
 
 ion-range[danger] .range-knob-min .range-knob {
   border: 2px solid #bdbdbd;
-  background: #c0c0c0; }
+  background: #efeff4; }
 
 ion-range[danger] .range-knob-min .range-pin,
 ion-range[danger] .range-knob-min .range-pin::before {
@@ -7161,7 +7161,7 @@ ion-range[danger] .range-pin::before {
 
 ion-range[light] .range-knob-min .range-knob {
   border: 2px solid #bdbdbd;
-  background: #c0c0c0; }
+  background: #efeff4; }
 
 ion-range[light] .range-knob-min .range-pin,
 ion-range[light] .range-knob-min .range-pin::before {
@@ -7176,7 +7176,7 @@ ion-range[light] .range-pin::before {
 
 ion-range[dark] .range-knob-min .range-knob {
   border: 2px solid #bdbdbd;
-  background: #c0c0c0; }
+  background: #efeff4; }
 
 ion-range[dark] .range-knob-min .range-pin,
 ion-range[dark] .range-knob-min .range-pin::before {
@@ -7191,7 +7191,7 @@ ion-range[dark] .range-pin::before {
 
 ion-range[favorite] .range-knob-min .range-knob {
   border: 2px solid #bdbdbd;
-  background: #c0c0c0; }
+  background: #efeff4; }
 
 ion-range[favorite] .range-knob-min .range-pin,
 ion-range[favorite] .range-knob-min .range-pin::before {
@@ -7751,7 +7751,7 @@ ion-toggle {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #c0c0c0;
+  background-color: #efeff4;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
@@ -9267,7 +9267,7 @@ ion-menu > .menu-inner > ion-header > ion-content.statusbar-padding:first-child[
 body {
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 1.4rem;
-  background-color: #c0c0c0; }
+  background-color: #efeff4; }
 
 ion-menu ion-content {
   background-color: white; }
