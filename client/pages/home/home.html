@@ -14,23 +14,23 @@
         <ion-list-header>
             My Food
         </ion-list-header>
-        <ion-item>
+        <ion-item (click)="presentActionSheet()">
             <ion-avatar item-left>
                 <img src="http://lorempixel.com/100/100/food">
             </ion-avatar>
             <h2>Food 2</h2>
             <h3>Location: Fridge</h3>
-            <p>This item was fully eaten.</p>
-            <ion-note item-right>$20</ion-note>
+            <p>2 more servings left</p>
+            <ion-note item-right>2 days left</ion-note>
         </ion-item>
-        <ion-item>
+        <ion-item (click)="presentActionSheet()">
             <ion-avatar item-left>
                 <img src="http://lorempixel.com/100/100/food">
             </ion-avatar>
             <h2>Food 2</h2>
             <h3>Location: Freezer</h3>
-            <p>This item was thrown away.</p>
-            <ion-note item-right>-$20</ion-note>
+            <p>4 more servings left</p>
+            <ion-note item-right>5 days left</ion-note>
         </ion-item>
     </ion-list>
 

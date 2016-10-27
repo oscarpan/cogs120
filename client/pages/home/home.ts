@@ -1,4 +1,4 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page, NavController, ActionSheetController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 import {WelcomeHeaderComponent} from '../../components/welcome-header/welcome-header';
@@ -12,8 +12,35 @@ import {LanguageSelectComponent} from "../../components/language-select/language
 export class HomePage extends MeteorComponent {
     private user:Meteor.User;
 
-    constructor(private nav:NavController, private translate:TranslateService) {
+    constructor(private nav:NavController, private translate:TranslateService, public actionSheetCtrl: ActionSheetController) {
         super();
+    }
+
+    presentActionSheet() {
+        let actionSheet = this.actionSheetCtrl.create({
+            title: 'Food Actions',
+            buttons: [
+                {
+                    text: 'Eat it!',
+                    role: 'destructive',
+                    handler: () => {
+                        console.log('Eat it clicked');
+                    }
+                },{
+                    text: 'Trash it!',
+                    handler: () => {
+                        console.log('Trash it clicked');
+                    }
+                },{
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: () => {
+                        console.log('Cancel clicked');
+                    }
+                }
+            ]
+        });
+        actionSheet.present();
     }
 
     ngOnInit():void {
