@@ -11,6 +11,7 @@ import {Constants} from "../lib/Constants";
 import {HomePage} from './pages/home/home';
 import {NewPagePage} from './pages/newpage/newpage';
 import {HistoryPage} from './pages/history/history';
+import {BudgetPage} from './pages/budget/budget';
 
 declare var Meteor;
 declare var device;
@@ -61,6 +62,7 @@ class MyApp extends MeteorComponent {
         this.pages = [
             {icon: "home", title: "Home", component: HomePage, rootPage: true},
             {icon: "clock", title: "History", component: HistoryPage, rootPage: false},
+            {icon: "cash", title: "Budget", component: BudgetPage, rootPage: false}
         ];
 
         Tracker.autorun(() => this.zone.run(() => {
