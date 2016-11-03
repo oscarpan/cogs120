@@ -32,6 +32,15 @@
             <p>4 more servings left</p>
             <ion-note item-right>5 days left</ion-note>
         </ion-item>
+        <ion-item (click)="presentActionSheet()" *ngFor="let food of foods | async">
+            <ion-avatar item-left>
+                <img src="http://lorempixel.com/100/100/food">
+            </ion-avatar>
+            <h2>{{ food.name }}</h2>
+            <h3>Location: {{ food.location }}</h3>
+            <p>4 more servings left</p>
+            <ion-note item-right>5 days left</ion-note>
+        </ion-item>
     </ion-list>
 
     <button fab fab-right fab-bottom primary fab-fixed (click)="addFoodItem()">

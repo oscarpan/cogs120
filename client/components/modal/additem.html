@@ -14,30 +14,33 @@
 <ion-content class="outer-content">
   <ion-list>
       <ion-item>
-          <ion-input placeholder="Food Name" type="text"></ion-input>
+          <ion-input placeholder="Food Name" type="text" [(ngModel)]="name"></ion-input>
       </ion-item>
             <ion-item>
-          <ion-input placeholder="Portions" type="text"></ion-input>
+          <ion-input placeholder="Portions" type="text" [(ngModel)]="portions"></ion-input>
       </ion-item>
             <ion-item>
-          <ion-input placeholder="Price" type="text"></ion-input>
+          <ion-input placeholder="Price" type="text" [(ngModel)]="price"></ion-input>
       </ion-item>
       <ion-item>
           <ion-label>Expiration Date</ion-label>  
           <ion-datetime displayFormat="DDD/MMM" pickerFormat="DDD MMM" [(ngModel)]="expiration"></ion-datetime>
       </ion-item>
       <ion-item>
-         <ion-segment>
-            <ion-segment-button value="counter">
+         <ion-segment [(ngModel)]="location">
+            <ion-segment-button value="Counter">
                 Counter
             </ion-segment-button>
-            <ion-segment-button value="fridge">
+            <ion-segment-button value="Fridge">
                 Refrigerator
             </ion-segment-button>
-             <ion-segment-button value="freezer">
+             <ion-segment-button value="Freezer">
                 Freezer
             </ion-segment-button>
         </ion-segment>
+      </ion-item>
+      <ion-item>
+          <button ion-button full large (click)="addItem()">Add Item</button>
       </ion-item>
   </ion-list>
 </ion-content>

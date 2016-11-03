@@ -4,6 +4,9 @@ import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 import {WelcomeHeaderComponent} from '../../components/welcome-header/welcome-header';
 import {LanguageSelectComponent} from "../../components/language-select/language-select";
 import { AddItemModalPage } from '../../components/modal/additem';
+import { Observable } from 'rxjs/Observable';
+import {Foods} from "../../../lib/collections/Foods";
+
 @Page({
     templateUrl: '/client/pages/home/home.html',
     pipes: [TranslatePipe],
@@ -11,9 +14,12 @@ import { AddItemModalPage } from '../../components/modal/additem';
 })
 export class HomePage extends MeteorComponent {
     private user:Meteor.User;
+    foods: Observable<any[]>;
 
     constructor(private nav:NavController, private translate:TranslateService, public actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController) {
         super();
+
+        this.foods = Foods.find({}).zone();
     }
 
     presentActionSheet() {
