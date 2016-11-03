@@ -11,11 +11,11 @@
                 {{page.title}}
             </button>
             <button ion-item *ngIf="isSignedin() == false" (click)="signin()">
-                <ion-icon name=""></ion-icon>
+                <ion-icon name="person"></ion-icon>
                 Sign in
             </button>
             <button ion-item *ngIf="isSignedin() == true" (click)="logout()">
-                <ion-icon name=""></ion-icon>
+                <ion-icon name="person"></ion-icon>
                 Logout
             </button>
         </ion-list>
