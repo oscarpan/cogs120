@@ -1,10 +1,11 @@
 import {MeteorComponent} from 'angular2-meteor';
-import {App, Platform} from 'ionic-angular';
+import {App, Platform, ModalController} from 'ionic-angular';
 import {Component, NgZone, provide, ViewChild} from '@angular/core';
 import {Http, HTTP_PROVIDERS} from '@angular/http';
 import {TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 import {MeteorIonicApp} from "./lib/_meteor-ionic-app";
 import {Constants} from "../lib/Constants";
+import {User} from './lib/usermock';
 
 /*********/
 /* Pages */
@@ -12,6 +13,8 @@ import {HomePage} from './pages/home/home';
 import {NewPagePage} from './pages/newpage/newpage';
 import {HistoryPage} from './pages/history/history';
 import {BudgetPage} from './pages/budget/budget';
+
+import {LoginModal} from './components/modal/login';
 
 declare var Meteor;
 declare var device;
@@ -47,6 +50,7 @@ class MyApp extends MeteorComponent {
     constructor(private app:App,
                 private platform:Platform,
                 private zone:NgZone,
+                private modalCtrl:ModalController,
                 private translate:TranslateService) {
         super();
         this.initializeApp();
@@ -62,7 +66,7 @@ class MyApp extends MeteorComponent {
         this.pages = [
             {icon: "home", title: "Home", component: HomePage, rootPage: true},
             {icon: "clock", title: "History", component: HistoryPage, rootPage: false},
-            {icon: "cash", title: "Budget", component: BudgetPage, rootPage: false}
+            {icon: "cash", title: "Budget", component: BudgetPage, rootPage: false},
         ];
 
         Tracker.autorun(() => this.zone.run(() => {
@@ -132,9 +136,19 @@ class MyApp extends MeteorComponent {
         this.navigate({page: page.component, setRoot: page.rootPage});
     }
 
+    private isSignedin():boolean {
+        return User.loggedIn;
+    }
+
+    private signin():void {
+        let modal = this.modalCtrl.create(LoginModal);
+        modal.present();
+    }
+
     private logout():void {
-        this.user = null;
-        Meteor.logout();
+        User.loggedIn = false;
+        //this.user = null;
+        //Meteor.logout();
         //this.navigate({page: LoginPage, setRoot: true});
     }
 

@@ -10,6 +10,14 @@
                 <ion-icon name="{{page.icon}}"></ion-icon>
                 {{page.title}}
             </button>
+            <button ion-item *ngIf="isSignedin() == false" (click)="signin()">
+                <ion-icon name=""></ion-icon>
+                Sign in
+            </button>
+            <button ion-item *ngIf="isSignedin() == true" (click)="logout()">
+                <ion-icon name=""></ion-icon>
+                Logout
+            </button>
         </ion-list>
     </ion-content>
 
