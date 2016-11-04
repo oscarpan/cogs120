@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Platform, NavParams, ViewController, Page} from 'ionic-angular';
 import {Foods} from "../../../lib/collections/Foods";
+var moment = require('moment/moment');
 
 @Component({
     templateUrl: '/client/components/modal/additem.html'
@@ -15,18 +16,19 @@ export class AddItemModalPage {
 
     name = '';
     location = '';
-    portion = '';
+    portions = '';
     price = '';
-    expiration = '';
+    expiration = moment().format('YYYY-MM-DD');
 
     addItem(){
         console.log(this.name);
         Foods.insert({
             'name': this.name,
             'location': this.location,
-            'portion': this.portion,
+            'portions': this.portions,
             'price': this.price,
             'expiration': this.expiration,
+            'status': 'fresh',
         })
         this.dismiss()
     }

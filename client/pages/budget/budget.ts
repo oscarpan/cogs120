@@ -7,7 +7,6 @@ import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
     pipes: [TranslatePipe]
 })
 export class BudgetPage extends MeteorComponent {
-    private user:MeteorUser;
 
     constructor(private nav:NavController) {
         super();

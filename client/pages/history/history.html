@@ -9,23 +9,14 @@
 
 <ion-content>
     <ion-list>
-        <ion-item>
+        <ion-item *ngFor="let food of foods | async">
             <ion-avatar item-left>
                 <img src="http://lorempixel.com/100/100/food">
             </ion-avatar>
-            <h2>Food 2</h2>
-            <h3>Location: Fridge</h3>
-            <p>This item was fully eaten.</p>
-            <ion-note item-right>$20</ion-note>
-        </ion-item>
-        <ion-item>
-            <ion-avatar item-left>
-                <img src="http://lorempixel.com/100/100/food">
-            </ion-avatar>
-            <h2>Food 2</h2>
-            <h3>Location: Freezer</h3>
-            <p>This item was thrown away.</p>
-            <ion-note item-right>-$20</ion-note>
+            <h2>{{ food.name }}</h2>
+            <h3>Location: {{ food.location }}</h3>
+            <p>This item was {{ food.status }}.</p>
+            <ion-note item-right>{{ today | amDifference: food.expiration :'days' }} days ago</ion-note>
         </ion-item>
     </ion-list>
 </ion-content>

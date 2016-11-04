@@ -7,9 +7,11 @@ import { AddItemModalPage } from '../../components/modal/additem';
 import { Observable } from 'rxjs/Observable';
 import {Foods} from "../../../lib/collections/Foods";
 
+import {MomentModule, DifferencePipe} from 'angular2-moment';
+
 @Page({
     templateUrl: '/client/pages/home/home.html',
-    pipes: [TranslatePipe],
+    pipes: [DifferencePipe],
     directives: [WelcomeHeaderComponent, LanguageSelectComponent] // !important! required to get custom component to show up
 })
 export class HomePage extends MeteorComponent {
@@ -19,10 +21,10 @@ export class HomePage extends MeteorComponent {
     constructor(private nav:NavController, private translate:TranslateService, public actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController) {
         super();
 
-        this.foods = Foods.find({}).zone();
+        this.foods = Foods.find({ status: "fresh" }, {sort: {expiration: 1}}).zone();
     }
 
-    presentActionSheet() {
+    presentActionSheet(food) {
         let actionSheet = this.actionSheetCtrl.create({
             title: 'Food Actions',
             buttons: [
@@ -30,11 +32,13 @@ export class HomePage extends MeteorComponent {
                     text: 'Eat it!',
                     role: 'destructive',
                     handler: () => {
+                        Foods.update(food._id, { $set: { status: 'eaten' } });
                         console.log('Eat it clicked');
                     }
                 },{
                     text: 'Trash it!',
                     handler: () => {
+                        Foods.update(food._id, { $set: { status: 'trashed' } });
                         console.log('Trash it clicked');
                     }
                 },{

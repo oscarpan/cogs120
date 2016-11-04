@@ -14,32 +14,14 @@
         <ion-list-header>
             My Food
         </ion-list-header>
-        <ion-item (click)="presentActionSheet()">
-            <ion-avatar item-left>
-                <img src="http://lorempixel.com/100/100/food">
-            </ion-avatar>
-            <h2>Food 2</h2>
-            <h3>Location: Fridge</h3>
-            <p>2 more servings left</p>
-            <ion-note item-right>2 days left</ion-note>
-        </ion-item>
-        <ion-item (click)="presentActionSheet()">
-            <ion-avatar item-left>
-                <img src="http://lorempixel.com/100/100/food">
-            </ion-avatar>
-            <h2>Food 2</h2>
-            <h3>Location: Freezer</h3>
-            <p>4 more servings left</p>
-            <ion-note item-right>5 days left</ion-note>
-        </ion-item>
-        <ion-item (click)="presentActionSheet()" *ngFor="let food of foods | async">
+        <ion-item (click)="presentActionSheet(food)" *ngFor="let food of foods | async">
             <ion-avatar item-left>
                 <img src="http://lorempixel.com/100/100/food">
             </ion-avatar>
             <h2>{{ food.name }}</h2>
             <h3>Location: {{ food.location }}</h3>
-            <p>4 more servings left</p>
-            <ion-note item-right>5 days left</ion-note>
+            <p>{{ food.portions }} more portions left</p>
+            <ion-note item-right>{{ food.expiration | amDifference: today :'days' }} days left</ion-note>
         </ion-item>
     </ion-list>
 
