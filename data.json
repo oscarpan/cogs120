@@ -1,0 +1,7 @@
+[
+  { "name" : "Chicken", "location" : "Fridge", "portions" : "2", "price" : "4", "expiration" : "2016-11-02", "status" : "eaten" },
+  { "name" : "Pizza", "location" : "Freezer", "portions" : "2", "price" : "8", "expiration" : "2016-11-01", "status" : "trashed" },
+  { "name" : "Beef", "location" : "Freezer", "portions" : "3", "price" : "10", "expiration" : "2016-11-08", "status" : "fresh" },
+  { "name" : "Pork", "location" : "Fridge", "portions" : "1", "price" : "5", "expiration" : "2016-11-10", "status" : "fresh" },
+  { "name" : "Bread", "location" : "Counter", "portions" : "3", "price" : "132", "expiration" : "2016-11-20", "status" : "fresh" }
+]
