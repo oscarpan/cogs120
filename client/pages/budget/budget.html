@@ -8,17 +8,31 @@
 </ion-header>
 
 <ion-content>
-    <button ion-button>Previous Week</button>
-    <button ion-button>Next Week</button>
-    <ion-list>
-        <ion-item>
-            <button ion-button (click)="addBudget()">Add Budget</button>
-        </ion-item>
-        <ion-item>
-            <button ion-button (click)="addTrans()">Add Food Transaction</button>
-        </ion-item>
-        <ion-item>
-            <button ion-button>Add Restaurant Transaction (click)=</button>
-        </ion-item>
-    </ion-list>
+    <ion-grid>
+        <ion-row center>
+            <ion-col width-10>
+                 <button ion-button block>Prv</button>
+            </ion-col>
+            <ion-col width-80>
+                <div style="text-align:center; font-weight: lighter; font-size: 24px">
+                    Current Week
+                </div>
+                </ion-col>
+            <ion-col width-10>
+                <button ion-button block>Nxt</button>
+            </ion-col>
+        </ion-row>
+        <ion-row center>
+            <ion-col width-20>
+                <button ion-button block>Gc</button>
+            </ion-col>
+            <ion-col width-60 style="font-size:48px; text-align:center; font-weight:lighter;">$50</ion-col>
+            <ion-col width-20>
+                <button ion-button block>Rt</button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+
+        </ion-row>
+    </ion-grid>
 </ion-content>
