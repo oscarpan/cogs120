@@ -14,13 +14,13 @@
 <ion-content class="outer-content">
     <ion-list>
         <ion-item>
-            <ion-input placeholder="Food Name" type="text" [(ngModel)]="name"></ion-input>
+            <ion-input placeholder="Food Name" type="text" [(ngModel)]="name" required></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input placeholder="Portions" type="text" [(ngModel)]="portions"></ion-input>
+            <ion-input placeholder="Portions" type="number" [(ngModel)]="portions" required></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input placeholder="Price" type="text" [(ngModel)]="price"></ion-input>
+            <ion-input placeholder="Price" type="number" [(ngModel)]="price" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Expiration Date</ion-label>

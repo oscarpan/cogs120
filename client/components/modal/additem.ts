@@ -15,7 +15,7 @@ export class AddItemModalPage {
         }
 
     name = '';
-    location = '';
+    location = 'Counter';
     portions = '';
     price = '';
     expiration = moment().format('YYYY-MM-DD');

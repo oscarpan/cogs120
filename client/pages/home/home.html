@@ -16,7 +16,7 @@
         </ion-list-header>
         <ion-item (click)="presentActionSheet(food)" *ngFor="let food of foods | async">
             <ion-avatar item-left>
-                <img src="http://lorempixel.com/100/100/food">
+                <img src="http://loremflickr.com/128/128/{{ food.name }}">
             </ion-avatar>
             <h2>{{ food.name }}</h2>
             <h3>Location: {{ food.location }}</h3>
