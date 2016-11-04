@@ -66,7 +66,7 @@ class MyApp extends MeteorComponent {
         this.pages = [
             {icon: "home", title: "Home", component: HomePage, rootPage: true},
             {icon: "clock", title: "History", component: HistoryPage, rootPage: false},
-            //{icon: "cash", title: "Budget", component: BudgetPage, rootPage: false},
+            {icon: "cash", title: "Budget", component: BudgetPage, rootPage: false},
         ];
 
         Tracker.autorun(() => this.zone.run(() => {

@@ -1,6 +1,8 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page, NavController, ModalController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
+import { addTransactionPage } from '../../components/modal/addTransaction';
+
 
 @Page({
     templateUrl: '/client/pages/budget/budget.html',
@@ -9,7 +11,7 @@ import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 export class BudgetPage extends MeteorComponent {
     private user:Meteor.User;
 
-    constructor(private nav:NavController) {
+    constructor(private nav:NavController, private modalCtrl:ModalController) {
         super();
     }
 
@@ -22,4 +24,9 @@ export class BudgetPage extends MeteorComponent {
     addBudget() {
         alert("Popup...");
     }
+
+    addTrans() {
+    let modal = this.modalCtrl.create(addTransactionPage);
+    modal.present();
+  }
 }
