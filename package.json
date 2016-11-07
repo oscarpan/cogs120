@@ -33,7 +33,8 @@
     "ng2-translate": "2.1.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.6",
-    "zone.js": "0.6.12"
+    "zone.js": "0.6.12",
+    "meteor-typings": "1.3.1"
   },
   "devDependencies": {
     "autoprefixer": "6.3.5",
