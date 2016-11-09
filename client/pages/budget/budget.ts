@@ -22,4 +22,5 @@ export class BudgetPage extends MeteorComponent {
     addBudget() {
         alert("Popup...");
     }
+    
 }

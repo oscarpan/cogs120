@@ -1,3 +1,5 @@
+/// <reference types="meteor-typings" />
+
 import {MeteorComponent} from 'angular2-meteor';
 import {App, Platform, ModalController} from 'ionic-angular';
 import {Component, NgZone, provide, ViewChild} from '@angular/core';
@@ -14,7 +16,7 @@ import {NewPagePage} from './pages/newpage/newpage';
 import {HistoryPage} from './pages/history/history';
 import {BudgetPage} from './pages/budget/budget';
 
-import {LoginModal} from './components/modal/login';
+import {LoginModal} from './components/accounts/login';
 
 declare var Meteor;
 declare var device;
@@ -80,6 +82,9 @@ class MyApp extends MeteorComponent {
             // Meteor.user() is a reactive variable.
             if (Meteor.user()) {
                 // Do something when user is present after initialization or after log in.
+                this.user = Meteor.user();
+            } else {
+                this.signin();
             }
         }));
 
@@ -137,7 +142,7 @@ class MyApp extends MeteorComponent {
     }
 
     private isSignedin():boolean {
-        return User.loggedIn;
+        return this.user != null;
     }
 
     private signin():void {
@@ -146,10 +151,9 @@ class MyApp extends MeteorComponent {
     }
 
     private logout():void {
-        User.loggedIn = false;
-        //this.user = null;
-        //Meteor.logout();
-        //this.navigate({page: LoginPage, setRoot: true});
+        this.user = null;
+        Meteor.logout();
+        //this.signin();
     }
 
     private navigate(location:{page:any, setRoot:boolean}):void {
