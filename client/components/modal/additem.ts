@@ -23,6 +23,7 @@ export class AddItemModalPage {
     addItem(){
         console.log(this.name);
         Foods.insert({
+            'userId': Meteor.userId(),
             'name': this.name,
             'location': this.location,
             'portions': this.portions,

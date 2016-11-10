@@ -21,7 +21,7 @@ export class HomePage extends MeteorComponent {
     constructor(private nav:NavController, private translate:TranslateService, public actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController) {
         super();
 
-        this.foods = Foods.find({ status: "fresh" }, {sort: {expiration: 1}}).zone();
+        this.foods = Foods.find({ userId: Meteor.userId(), status: "fresh" }, {sort: {expiration: 1}}).zone();
     }
 
     presentActionSheet(food) {
