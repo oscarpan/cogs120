@@ -10,6 +10,13 @@ export class addTransactionPage {
   constructor(private viewCtrl: ViewController) {
   }
 
+  value = '';
+
+  addValue(){
+  	console.log(this.value);
+  	this.dismiss()
+  }
+
   dismiss() {
     this.viewCtrl.dismiss();
   }
