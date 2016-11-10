@@ -1,4 +1,5 @@
 /// <reference types="meteor-typings" />
+import main = require("./Users../server../main/client")
 
 import {MeteorComponent} from 'angular2-meteor';
 import {App, Platform, ModalController} from 'ionic-angular';
@@ -45,6 +46,7 @@ class MyApp extends MeteorComponent {
     private pages:Array<IPage>;
     private appName:string;
     private user:Meteor.User;
+    private modalOpen:boolean = false;
 
     @ViewChild('leftMenu') leftMenu:any;
     @ViewChild('content') nav:any;
@@ -83,7 +85,8 @@ class MyApp extends MeteorComponent {
             if (Meteor.user()) {
                 // Do something when user is present after initialization or after log in.
                 this.user = Meteor.user();
-            } else {
+            } else if(!Meteor.loggingIn()) {
+                console.debug("Not logged main");
                 this.signin();
             }
         }));
@@ -146,7 +149,17 @@ class MyApp extends MeteorComponent {
     }
 
     private signin():void {
-        let modal = this.modalCtrl.create(LoginModal);
+        if(this.modalOpen == true) {
+            return;
+        }
+        let modal = this.modalCtrl.create(LoginModal, {}, {
+            showBackdrop: false,
+            enableBackdropDismiss: false
+        });
+        modal.onDidDismiss(() => {
+            this.modalOpen = false;
+        });
+        this.modalOpen = true;
         modal.present();
     }
 

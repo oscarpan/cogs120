@@ -36,12 +36,15 @@ export class LoginModal extends MeteorComponent {
             });
             loading.present();
             Meteor.loginWithPassword(this.username, this.password, (err) => {
-                loading.dismiss();
-                if(err) {
-                    alert("Wrong username or password");
-                } else {
-                    this.viewCtrl.dismiss();
-                }
+                console.debug("loginWithPassword finished", err);
+                loading.dismiss().then(() => {
+                    if(err) {
+                        alert("Wrong username or password");
+                    } else {
+                        console.debug("Dismissing modal");
+                        this.dismiss();
+                    }
+                });
             });
         } else {
             alert("You must enter a valid username and password");
@@ -72,13 +75,16 @@ export class LoginModal extends MeteorComponent {
                 username: this.username,
                 password: this.password,
             }, (err) => {
-                loading.dismiss();
-                if(err) {
-                     alert("Oops! The system was unable to create your account at this time. Try again later");
-                     console.error(err);
-                } else {
-                    this.viewCtrl.dismiss();
-                }
+                console.debug("createUser finished", err);
+                loading.dismiss().then(() => {
+                    if(err) {
+                        alert("Oops! The system was unable to create your account at this time. Try again later");
+                        console.error(err);
+                    } else {
+                        console.debug("Closing modal");
+                        this.dismiss();
+                    }
+                });
             });
         } else {
             alert("Password confirmation does not match");
