@@ -35,13 +35,12 @@ export class LoginModal extends MeteorComponent {
                 content: "Logging in..."
             });
             loading.present();
-            let vc = this.viewCtrl;
-            Meteor.loginWithPassword(this.username, this.password, function(err) {
+            Meteor.loginWithPassword(this.username, this.password, (err) => {
                 loading.dismiss();
                 if(err) {
                     alert("Wrong username or password");
                 } else {
-                    vc.dismiss();
+                    this.viewCtrl.dismiss();
                 }
             });
         } else {
@@ -69,17 +68,16 @@ export class LoginModal extends MeteorComponent {
                 content: "Creating Account..."
             });
             loading.present();
-            let vc = this.viewCtrl;
             Accounts.createUser({
                 username: this.username,
                 password: this.password,
-            }, function(err) {
+            }, (err) => {
                 loading.dismiss();
                 if(err) {
                      alert("Oops! The system was unable to create your account at this time. Try again later");
                      console.error(err);
                 } else {
-                    vc.dismiss();
+                    this.viewCtrl.dismiss();
                 }
             });
         } else {

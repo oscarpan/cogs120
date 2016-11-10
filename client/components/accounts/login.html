@@ -33,7 +33,6 @@
     </div>
     <div *ngIf="creatingAccount === true">
       <button ion-button (click)="createAccount()" [disabled]="isCreateAccountFormValid() == false" block>Create Account</button>
-      <button ion-button (click)="creatingAccount = false" block>Have an account? Sign in</button>
+      <button ion-button (click)="creatingAccount = false" outline block>Have an account? Sign in</button>
     </div>
-    <button ion-button (click)="dismiss()">Cancel</button>
 </ion-content>
