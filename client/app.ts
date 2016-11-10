@@ -1,6 +1,4 @@
 /// <reference types="meteor-typings" />
-import main = require("./Users../server../main/client")
-
 import {MeteorComponent} from 'angular2-meteor';
 import {App, Platform, ModalController} from 'ionic-angular';
 import {Component, NgZone, provide, ViewChild} from '@angular/core';
