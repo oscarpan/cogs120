@@ -3,3 +3,4 @@
  */
 import '../lib/methods';
 import './publish';
+import './lib/accounts';

@@ -1,4 +1,3 @@
-import {Page, ViewController} from 'ionic-angular';
 import {Component} from '@angular/core';
 import {Platform, NavParams, ViewController, Page} from 'ionic-angular';
 
