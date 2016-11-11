@@ -15,8 +15,8 @@ export class AddItemModalPage {
         }
 
     name = '';
+    type = 'grocery';
     location = 'Counter';
-    portions = '';
     price = '';
     expiration = moment().format('YYYY-MM-DD');
 
@@ -24,9 +24,9 @@ export class AddItemModalPage {
         console.log(this.name);
         Foods.insert({
             userId: Meteor.userId(),
+            type: this.type,
             name: this.name,
             location: this.location,
-            portions: this.portions,
             price: this.price,
             expiration: this.expiration,
             status: 'fresh',

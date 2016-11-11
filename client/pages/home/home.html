@@ -12,7 +12,7 @@
 <ion-content>
     <ion-list>
         <ion-list-header>
-            My Food
+            Available Grocery Foods
         </ion-list-header>
         <ion-item (click)="presentActionSheet(food)" *ngFor="let food of foods | async">
             <ion-avatar item-left>
@@ -20,7 +20,7 @@
             </ion-avatar>
             <h2>{{ food.name }}</h2>
             <h3>Location: {{ food.location }}</h3>
-            <p>{{ food.portions }} more portions left</p>
+            <p>Price: ${{ food.price }}</p>
             <ion-note item-right>
                 <span *ngIf="(food.expiration | amDifference: today :'days') == 0" danger>expires today</span>
                 <span *ngIf="(food.expiration | amDifference: today :'days') > 0">{{ food.expiration | amDifference: today :'days' }} days left</span>

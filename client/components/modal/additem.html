@@ -14,19 +14,26 @@
 <ion-content class="outer-content">
     <ion-list>
         <ion-item>
-            <ion-input placeholder="Food Name" type="text" [(ngModel)]="name" required></ion-input>
+            <ion-segment [(ngModel)]="type">
+                <ion-segment-button value="grocery">
+                    Grocery
+                </ion-segment-button>
+                <ion-segment-button value="restaurant">
+                    Restaurant
+                </ion-segment-button>
+            </ion-segment>
         </ion-item>
         <ion-item>
-            <ion-input placeholder="Portions (numbers only)" type="number" [(ngModel)]="portions" required></ion-input>
+            <ion-input placeholder="Food Name" type="text" [(ngModel)]="name" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-input placeholder="Price (numbers only)" type="number" [(ngModel)]="price" required></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="type == 'grocery'">
             <ion-label>Expiration Date</ion-label>
             <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="MMM DD YYYY" min="2016-11-01" max="2018-12-31" [(ngModel)]="expiration"></ion-datetime>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="type == 'grocery'">
             <ion-segment [(ngModel)]="location">
                 <ion-segment-button value="Counter">
                     Counter

@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Add Transaction
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span color="primary" showWhen="ios">Cancel</span>
+                <ion-icon name="md-close-circle" hideWhen="ios"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content">
+
+<ion-list>
+        <ion-item>
+            <ion-input placeholder="Price" type="number" [(ngModel)]="value" required></ion-input>
+        </ion-item>
+        </ion-list>
+
+
+        <ion-item>
+            <button ion-button full large (click)="addValue()">Add Transaction</button>
+        </ion-item>
+
+        </ion-content>
