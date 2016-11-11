@@ -17,7 +17,6 @@ export class AddItemModalPage {
     name = '';
     type = 'grocery';
     location = 'Counter';
-    portions = '';
     price = '';
     expiration = moment().format('YYYY-MM-DD');
 
@@ -28,7 +27,6 @@ export class AddItemModalPage {
             type: this.type,
             name: this.name,
             location: this.location,
-            portions: this.portions,
             price: this.price,
             expiration: this.expiration,
             status: 'fresh',

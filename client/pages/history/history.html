@@ -25,11 +25,6 @@
         </ion-item>
         <ion-list-header>Stats</ion-list-header>
         <ion-item>
-            <ion-icon name="ios-nutrition" item-left></ion-icon>
-            Portions Ate
-            <ion-note item-right>{{ foods | pluckThenSum: "portions" }}</ion-note>
-        </ion-item>
-        <ion-item>
             <ion-icon name="cash" item-left></ion-icon>
             Spent on Food
             <ion-note item-right>${{ foods | pluckThenSum: "price" }}</ion-note>
