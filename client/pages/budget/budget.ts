@@ -30,8 +30,12 @@ export class BudgetPage extends MeteorComponent {
 
     private loadTransactions() {
         let range = this.getWeekRange(this.week);
-                this.foods = Foods.find({ userId: Meteor.userId(), status: "fresh" }, {sort: {expiration: 1}}).zone();
-        this.loadFood();
+        this.foods = Foods.find({ userId: Meteor.userId(), status: "fresh",
+            createdAt: {
+                $gte: range.start,
+                $lt: range.end
+            }
+        }, {sort: {expiration: 1}}).zone();
     }
 
     private getWeekRange(week:number) {
