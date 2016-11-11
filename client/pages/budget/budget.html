@@ -4,6 +4,11 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Budget</ion-title>
+        <ion-buttons end (click)="setBudget()">
+            <button>Edit
+                <ion-icon name="logo-usd"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -23,7 +28,7 @@
             </ion-col>
         </ion-row>
         <ion-row center>
-            <ion-col width-100 style="font-size:48px; text-align:center; font-weight:lighter;">${{budget - (foods | pluckThenSum: "price")}}</ion-col>
+            <ion-col (click)="setBudget()" width-100 style="font-size:48px; text-align:center; font-weight:lighter;">${{budget - (foods | pluckThenSum: "price")}}</ion-col>
         </ion-row>
         <ion-row>
             

@@ -42,7 +42,7 @@ export class BudgetPage extends MeteorComponent {
         console.debug("Loading transactions");
         let range = this.getWeekRange(this.week);
         console.debug(JSON.stringify(range));
-        this.foods = Foods.find({ userId: Meteor.userId(), status: "fresh",
+        this.foods = Foods.find({ userId: Meteor.userId(),
             createdAt: {
                 $gte: range.start.getTime(),
                 $lt: range.end.getTime()
