@@ -4,6 +4,7 @@ import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 import {AddItemModalPage} from '../../components/modal/additem';
 import {Foods} from "../../../lib/collections/Foods";
 import {Transactions} from "../../../lib/collections/Transactions";
+import { Observable } from 'rxjs/Observable';
 
 import {PluckThenSumPipe} from '../../lib/pluck-then-sum.pipe';
 
