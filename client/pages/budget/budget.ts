@@ -17,6 +17,8 @@ export class BudgetPage extends MeteorComponent {
     private budget:number;
     private spent:number = 0;
 
+
+    private weekLabel:string = "";
     private week:number = 0;
     foods: Observable<any[]>;
 
@@ -29,27 +31,39 @@ export class BudgetPage extends MeteorComponent {
     }
 
     private loadTransactions() {
+        console.debug("Loading transactions");
         let range = this.getWeekRange(this.week);
+        console.debug(JSON.stringify(range));
         this.foods = Foods.find({ userId: Meteor.userId(), status: "fresh",
             createdAt: {
-                $gte: range.start,
-                $lt: range.end
+                $gte: range.start.getTime(),
+                $lt: range.end.getTime()
             }
         }, {sort: {expiration: 1}}).zone();
+    }
+
+    private decrementWeek() {
+        this.week -= 1;
+        this.loadTransactions();
+    }
+
+    private incrementWeek() {
+        this.week += 1;
+        this.loadTransactions();
     }
 
     private getWeekRange(week:number) {
         let start;
         let end;
         if(week > 0) {
-            start = moment().add(week, 'weeks').startOf('isoWeek');
-            end = moment().add(week, 'weeks').endOf('isoWeek');
+            start = moment().add(week, 'weeks').startOf('isoWeek').toDate();
+            end = moment().add(week, 'weeks').endOf('isoWeek').toDate();
         } else if(week < 0) {
-            start = moment().subtract(week, 'weeks').startOf('isoWeek');
-            end = moment().subtract(week, 'weeks').endOf('isoWeek');
+            start = moment().subtract(week, 'weeks').startOf('isoWeek').toDate();
+            end = moment().subtract(week, 'weeks').endOf('isoWeek').toDate();
         } else {
-            start = moment().startOf('isoWeek');
-            end = moment().endOf('isoWeek');
+            start = moment().startOf('isoWeek').toDate();
+            end = moment().endOf('isoWeek').toDate();
         }
 
         return {

@@ -11,15 +11,15 @@
     <ion-grid>
         <ion-row center>
             <ion-col width-10>
-                 <button ion-button block><ion-icon name="arrow-back"></ion-icon></button>
+                 <button ion-button block (click)="decrementWeek()"><ion-icon name="arrow-back"></ion-icon></button>
             </ion-col>
             <ion-col width-80>
                 <div style="text-align:center; font-weight: lighter; font-size: 24px">
-                    Current Week
+                    Week {{week}}
                 </div>
                 </ion-col>
             <ion-col width-10>
-                <button ion-button block><ion-icon name="arrow-forward"></ion-icon></button>
+                <button ion-button block (click)="incrementWeek()"><ion-icon name="arrow-forward"></ion-icon></button>
             </ion-col>
         </ion-row>
         <ion-row center>
