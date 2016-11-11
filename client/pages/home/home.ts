@@ -8,10 +8,11 @@ import { Observable } from 'rxjs/Observable';
 import {Foods} from "../../../lib/collections/Foods";
 
 import {MomentModule, DifferencePipe} from 'angular2-moment';
+import {PluckThenSumPipe} from '../../lib/pluck-then-sum.pipe';
 
 @Page({
     templateUrl: '/client/pages/home/home.html',
-    pipes: [DifferencePipe],
+    pipes: [DifferencePipe, PluckThenSumPipe],
     directives: [WelcomeHeaderComponent, LanguageSelectComponent] // !important! required to get custom component to show up
 })
 export class HomePage extends MeteorComponent {
