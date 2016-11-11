@@ -3,33 +3,52 @@ import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 import { addTransactionPage } from '../../components/modal/addTransaction';
 import {Foods} from "../../../lib/collections/Foods";
-import {Transactions} from "../../../lib/collections/Transactions";
+import { Observable } from 'rxjs/Observable';
+var moment = require('moment/moment');
 
 @Page({
     templateUrl: '/client/pages/budget/budget.html',
     pipes: [TranslatePipe]
 })
 export class BudgetPage extends MeteorComponent {
+    private transactions:Observable<any[]>;
     private user:Meteor.User;
     private budget:number;
     private spent:number = 0;
-    
+
+    private week:number = 0;
 
     private budgetPromptOpen:boolean = false;
 
     constructor(public nav:NavController, public modalCtrl:ModalController,
                 public alertCtrl:AlertController) {
         super();
-        this.loadFood();
         this.loadTransactions();
     }
 
-    private loadFood() {
-
+    private loadTransactions() {
+        let range = this.getWeekRange(this.week);
+        
     }
 
-    private loadTransactions() {
+    private getWeekRange(week:number) {
+        let start;
+        let end;
+        if(week > 0) {
+            start = moment().add(week, 'weeks').startOf('isoWeek');
+            end = moment().add(week, 'weeks').endOf('isoWeek');
+        } else if(week < 0) {
+            start = moment().subtract(week, 'weeks').startOf('isoWeek');
+            end = moment().subtract(week, 'weeks').endOf('isoWeek');
+        } else {
+            start = moment().startOf('isoWeek');
+            end = moment().endOf('isoWeek');
+        }
 
+        return {
+            start: start,
+            end: end
+        };
     }
 
     ngOnInit():void {
