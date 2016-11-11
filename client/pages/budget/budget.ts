@@ -1,14 +1,15 @@
 import {Page, NavController, ModalController, AlertController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
-import { addTransactionPage } from '../../components/modal/addTransaction';
+import {AddItemModalPage} from '../../components/modal/additem';
 import {Foods} from "../../../lib/collections/Foods";
 import { Observable } from 'rxjs/Observable';
 var moment = require('moment/moment');
+import {PluckThenSumPipe} from '../../lib/pluck-then-sum.pipe';
 
 @Page({
     templateUrl: '/client/pages/budget/budget.html',
-    pipes: [TranslatePipe]
+    pipes: [TranslatePipe, PluckThenSumPipe]
 })
 export class BudgetPage extends MeteorComponent {
     private transactions:Observable<any[]>;
@@ -17,6 +18,7 @@ export class BudgetPage extends MeteorComponent {
     private spent:number = 0;
 
     private week:number = 0;
+    foods: Observable<any[]>;
 
     private budgetPromptOpen:boolean = false;
 
@@ -28,7 +30,8 @@ export class BudgetPage extends MeteorComponent {
 
     private loadTransactions() {
         let range = this.getWeekRange(this.week);
-        
+                this.foods = Foods.find({ userId: Meteor.userId(), status: "fresh" }, {sort: {expiration: 1}}).zone();
+        this.loadFood();
     }
 
     private getWeekRange(week:number) {
@@ -116,8 +119,8 @@ export class BudgetPage extends MeteorComponent {
         });
     }
 
-    addTrans() {
-        let modal = this.modalCtrl.create(addTransactionPage);
+    addFoodItem():void {
+        let modal = this.modalCtrl.create(AddItemModalPage);
         modal.present();
     }
 }

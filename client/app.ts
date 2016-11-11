@@ -67,8 +67,8 @@ class MyApp extends MeteorComponent {
         // title references a key in the language JSON to be translated by the translate pipe in the HTML
         this.pages = [
             {icon: "home", title: "Home", component: HomePage, rootPage: true},
-            {icon: "clock", title: "History", component: HistoryPage, rootPage: false},
-            {icon: "cash", title: "Budget", component: BudgetPage, rootPage: false},
+            {icon: "clock", title: "History", component: HistoryPage, rootPage: true},
+            {icon: "cash", title: "Budget", component: BudgetPage, rootPage: true},
         ];
 
         Tracker.autorun(() => this.zone.run(() => {
