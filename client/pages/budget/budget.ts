@@ -30,6 +30,14 @@ export class BudgetPage extends MeteorComponent {
         this.loadTransactions();
     }
 
+    private getWeekLabel():String {
+        let range = this.getWeekRange(this.week);
+        let start = moment(range.start).format('l');
+        let end = moment(range.end).format('l');
+
+        return start + " - " + end;
+    }
+
     private loadTransactions() {
         console.debug("Loading transactions");
         let range = this.getWeekRange(this.week);
@@ -52,7 +60,7 @@ export class BudgetPage extends MeteorComponent {
         this.loadTransactions();
     }
 
-    private getWeekRange(week:number) {
+    private getWeekRange(week:number):any {
         let start;
         let end;
         if(week > 0) {
