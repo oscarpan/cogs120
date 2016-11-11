@@ -6,17 +6,25 @@ import {Foods} from "../../../lib/collections/Foods";
 import {Transactions} from "../../../lib/collections/Transactions";
 import { Observable } from 'rxjs/Observable';
 
+import {Progress} from '../../components/progressbar/progress.directive';
+import {Bar} from '../../components/progressbar/bar.component';
+import {Progressbar} from '../../components/progressbar/progressbar.component';
+
 import {PluckThenSumPipe} from '../../lib/pluck-then-sum.pipe';
 
 @Page({
     templateUrl: '/client/pages/budget/budget.html',
-    pipes: [TranslatePipe, PluckThenSumPipe]
+    pipes: [TranslatePipe, PluckThenSumPipe],
+    directives: [Progress, Bar, Progressbar],
 })
 export class BudgetPage extends MeteorComponent {
     private user:Meteor.User;
     private budget:number;
     private spent:number = 0;
     foods: Observable<any[]>;
+
+    private currentValue:number = 0;
+    private max:number = 20;
     
 
     private budgetPromptOpen:boolean = false;
