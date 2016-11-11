@@ -21,7 +21,11 @@
             <h2>{{ food.name }}</h2>
             <h3>Location: {{ food.location }}</h3>
             <p>{{ food.portions }} more portions left</p>
-            <ion-note item-right>{{ food.expiration | amDifference: today :'days' }} days left</ion-note>
+            <ion-note item-right>
+                <span *ngIf="(food.expiration | amDifference: today :'days') == 0" danger>expires today</span>
+                <span *ngIf="(food.expiration | amDifference: today :'days') > 0">{{ food.expiration | amDifference: today :'days' }} days left</span>
+                <span *ngIf="(food.expiration | amDifference: today :'days') < 0" danger>expired {{ today | amDifference: food.expiration :'days' }} days ago</span>
+            </ion-note>
         </ion-item>
     </ion-list>
 

@@ -23,13 +23,14 @@ export class AddItemModalPage {
     addItem(){
         console.log(this.name);
         Foods.insert({
-            'userId': Meteor.userId(),
-            'name': this.name,
-            'location': this.location,
-            'portions': this.portions,
-            'price': this.price,
-            'expiration': this.expiration,
-            'status': 'fresh',
+            userId: Meteor.userId(),
+            name: this.name,
+            location: this.location,
+            portions: this.portions,
+            price: this.price,
+            expiration: this.expiration,
+            status: 'fresh',
+            createdAt: new Date().valueOf(),
         })
         this.dismiss()
     }

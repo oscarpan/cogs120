@@ -5,11 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import {Foods} from "../../../lib/collections/Foods";
 
 import {MomentModule, DifferencePipe} from 'angular2-moment';
+import {PluckThenSumPipe} from '../../lib/pluck-then-sum.pipe';
 
 //TODO change templateUrl
 @Page({
     templateUrl: '/client/pages/history/history.html',
-    pipes: [DifferencePipe]
+    pipes: [DifferencePipe, PluckThenSumPipe]
 })
 //TODO change class name
 export class HistoryPage extends MeteorComponent {
