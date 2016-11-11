@@ -1,3 +1,4 @@
+/// <reference types="meteor-typings" />
 import {MeteorComponent} from 'angular2-meteor';
 import {App, Platform, ModalController} from 'ionic-angular';
 import {Component, NgZone, provide, ViewChild} from '@angular/core';
@@ -14,7 +15,7 @@ import {NewPagePage} from './pages/newpage/newpage';
 import {HistoryPage} from './pages/history/history';
 import {BudgetPage} from './pages/budget/budget';
 
-import {LoginModal} from './components/modal/login';
+import {LoginModal} from './components/accounts/login';
 
 declare var Meteor;
 declare var device;
@@ -43,6 +44,7 @@ class MyApp extends MeteorComponent {
     private pages:Array<IPage>;
     private appName:string;
     private user:Meteor.User;
+    private modalOpen:boolean = false;
 
     @ViewChild('leftMenu') leftMenu:any;
     @ViewChild('content') nav:any;
@@ -80,6 +82,10 @@ class MyApp extends MeteorComponent {
             // Meteor.user() is a reactive variable.
             if (Meteor.user()) {
                 // Do something when user is present after initialization or after log in.
+                this.user = Meteor.user();
+            } else if(!Meteor.loggingIn()) {
+                console.debug("Not logged main");
+                this.signin();
             }
         }));
 
@@ -137,19 +143,28 @@ class MyApp extends MeteorComponent {
     }
 
     private isSignedin():boolean {
-        return User.loggedIn;
+        return this.user != null;
     }
 
     private signin():void {
-        let modal = this.modalCtrl.create(LoginModal);
+        if(this.modalOpen == true) {
+            return;
+        }
+        let modal = this.modalCtrl.create(LoginModal, {}, {
+            showBackdrop: false,
+            enableBackdropDismiss: false
+        });
+        modal.onDidDismiss(() => {
+            this.modalOpen = false;
+        });
+        this.modalOpen = true;
         modal.present();
     }
 
     private logout():void {
-        User.loggedIn = false;
-        //this.user = null;
-        //Meteor.logout();
-        //this.navigate({page: LoginPage, setRoot: true});
+        this.user = null;
+        Meteor.logout();
+        //this.signin();
     }
 
     private navigate(location:{page:any, setRoot:boolean}):void {

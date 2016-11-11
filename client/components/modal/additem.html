@@ -17,14 +17,14 @@
             <ion-input placeholder="Food Name" type="text" [(ngModel)]="name" required></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input placeholder="Portions" type="number" [(ngModel)]="portions" required></ion-input>
+            <ion-input placeholder="Portions (numbers only)" type="number" [(ngModel)]="portions" required></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input placeholder="Price" type="number" [(ngModel)]="price" required></ion-input>
+            <ion-input placeholder="Price (numbers only)" type="number" [(ngModel)]="price" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Expiration Date</ion-label>
-            <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="MMM DD YYYY" [(ngModel)]="expiration"></ion-datetime>
+            <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="MMM DD YYYY" min="2016-11-01" max="2018-12-31" [(ngModel)]="expiration"></ion-datetime>
         </ion-item>
         <ion-item>
             <ion-segment [(ngModel)]="location">

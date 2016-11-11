@@ -20,7 +20,7 @@ export class HistoryPage extends MeteorComponent {
                 private translate:TranslateService) {
         super();
 
-        this.foods = Foods.find({ status: { $ne: "fresh" } }, {sort: {expiration: 1}}).zone();
+        this.foods = Foods.find({ userId: Meteor.userId(), status: { $ne: "fresh" } }, {sort: {expiration: 1}}).zone();
     }
 
     ngOnInit():void {
