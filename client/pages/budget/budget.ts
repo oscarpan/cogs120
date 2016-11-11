@@ -1,18 +1,21 @@
 import {Page, NavController, ModalController, AlertController} from 'ionic-angular';
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
-import { addTransactionPage } from '../../components/modal/addTransaction';
+import {AddItemModalPage} from '../../components/modal/additem';
 import {Foods} from "../../../lib/collections/Foods";
 import {Transactions} from "../../../lib/collections/Transactions";
 
+import {PluckThenSumPipe} from '../../lib/pluck-then-sum.pipe';
+
 @Page({
     templateUrl: '/client/pages/budget/budget.html',
-    pipes: [TranslatePipe]
+    pipes: [TranslatePipe, PluckThenSumPipe]
 })
 export class BudgetPage extends MeteorComponent {
     private user:Meteor.User;
     private budget:number;
     private spent:number = 0;
+    foods: Observable<any[]>;
     
 
     private budgetPromptOpen:boolean = false;
@@ -20,6 +23,7 @@ export class BudgetPage extends MeteorComponent {
     constructor(public nav:NavController, public modalCtrl:ModalController,
                 public alertCtrl:AlertController) {
         super();
+        this.foods = Foods.find({ userId: Meteor.userId(), status: "fresh" }, {sort: {expiration: 1}}).zone();
         this.loadFood();
         this.loadTransactions();
     }
@@ -97,8 +101,8 @@ export class BudgetPage extends MeteorComponent {
         });
     }
 
-    addTrans() {
-        let modal = this.modalCtrl.create(addTransactionPage);
+    addFoodItem():void {
+        let modal = this.modalCtrl.create(AddItemModalPage);
         modal.present();
     }
 }

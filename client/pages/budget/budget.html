@@ -11,7 +11,7 @@
     <ion-grid>
         <ion-row center>
             <ion-col width-10>
-                 <button ion-button block>Prv</button>
+                 <button ion-button block><ion-icon name="arrow-back"></ion-icon></button>
             </ion-col>
             <ion-col width-80>
                 <div style="text-align:center; font-weight: lighter; font-size: 24px">
@@ -19,20 +19,43 @@
                 </div>
                 </ion-col>
             <ion-col width-10>
-                <button ion-button block>Nxt</button>
+                <button ion-button block><ion-icon name="arrow-forward"></ion-icon></button>
             </ion-col>
         </ion-row>
         <ion-row center>
-            <ion-col width-20>
-                <button ion-button block (click)="addTrans()">Gc</button>
-            </ion-col>
-            <ion-col width-60 style="font-size:48px; text-align:center; font-weight:lighter;">${{budget - spent}}</ion-col>
-            <ion-col width-20>
-                <button ion-button block>Rt</button>
-            </ion-col>
+            <ion-col width-100 style="font-size:48px; text-align:center; font-weight:lighter;">${{budget - (foods | pluckThenSum: "price")}}</ion-col>
         </ion-row>
         <ion-row>
             
         </ion-row>
     </ion-grid>
+
+    <ion-list>
+        <ion-list-header>
+            Food of Week
+        </ion-list-header>
+        <ion-item *ngFor="let food of foods | async">
+            <ion-avatar item-left>
+                <img src="http://loremflickr.com/128/128/{{ food.name }}">
+            </ion-avatar>
+            <h2>{{ food.name }}</h2>
+            <ion-note item-right>${{ food.price }}</ion-note>
+        </ion-item>
+
+        <ion-list-header>Stats</ion-list-header>
+        <ion-item>
+            <ion-icon name="logo-usd" item-left></ion-icon>
+            Budget
+            <ion-note item-right>${{ budget }}</ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="cash" item-left></ion-icon>
+            Spent on Food
+            <ion-note item-right>${{ foods | pluckThenSum: "price" }}</ion-note>
+        </ion-item>
+    </ion-list>
+
+    <button fab fab-right fab-bottom primary fab-fixed (click)="addFoodItem()">
+        <ion-icon name="add"></ion-icon>
+    </button>
 </ion-content>
