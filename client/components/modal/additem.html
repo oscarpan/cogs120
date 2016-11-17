@@ -47,7 +47,7 @@
             </ion-segment>
         </ion-item>
         <ion-item>
-            <button ion-button full large (click)="addItem()">Add Item</button>
+            <button ion-button full large (click)="addItem()" [disabled]="isFormValid() == false">Add Item</button>
         </ion-item>
     </ion-list>
 </ion-content>

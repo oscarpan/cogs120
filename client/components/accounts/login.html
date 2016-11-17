@@ -9,23 +9,23 @@
 <ion-list>
         <ion-item>
             <ion-label stacked>Username</ion-label>
-            <ion-input type="text" [(ngModel)]="username"></ion-input>
+            <ion-input type="text" [(ngModel)]="username" required></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label stacked>Password</ion-label>
-            <ion-input type="password" [(ngModel)]="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="password" required></ion-input>
         </ion-item>
-        <ion-item *ngIf="creatingAccount === true">
+        <ion-item [hidden]="creatingAccount === false">
             <ion-label stacked>Password Confirmation</ion-label>
-            <ion-input type="password" [(ngModel)]="passwordConfirm"></ion-input>
+            <ion-input type="password" [(ngModel)]="passwordConfirm" required></ion-input>
         </ion-item>
     </ion-list>
-    <div *ngIf="creatingAccount === false">
+    <div [hidden]="creatingAccount === true">
       <button ion-button (click)="login()" [disabled]="isLoginFormValid() == false" block>Sign In</button>    
       <button ion-button clear small (click)="creatingAccount = true" block>New User? Create Account</button>
     </div>
-    <div *ngIf="creatingAccount === true">
+    <div [hidden]="creatingAccount === false">
       <button ion-button (click)="createAccount()" [disabled]="isCreateAccountFormValid() == false" block>Create Account</button>
       <button ion-button (click)="creatingAccount = false" clear small block>Have an account? Sign in</button>
     </div>

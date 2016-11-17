@@ -35,6 +35,12 @@ export class AddItemModalPage {
         this.dismiss()
     }
 
+    isFormValid():boolean {
+        let nameValid = this.name != null && this.name.length > 0;
+        let priceValid = this.price != null && this.price != '' && !isNaN(Number(this.price)) && Number(this.price) >=0;
+        return nameValid && priceValid;
+    }
+
     dismiss() {
         this.viewCtrl.dismiss();
     }

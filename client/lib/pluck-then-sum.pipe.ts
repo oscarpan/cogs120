@@ -15,6 +15,6 @@ export class PluckThenSumPipe implements PipeTransform {
             while (keys.length && (result = result[keys.shift()]));
             console.log(value["price"]);
             return result;
-        }).reduce((previous: any, current: any) => parseInt(previous) + parseInt(current), 0);
+        }).reduce((previous: any, current: any) => Number(previous) + Number(current), 0);
     }
 }
