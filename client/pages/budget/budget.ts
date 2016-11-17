@@ -31,11 +31,16 @@ export class BudgetPage extends MeteorComponent {
     }
 
     private getWeekLabel():String {
+
         let range = this.getWeekRange(this.week);
         let start = moment(range.start).format('l');
         let end = moment(range.end).format('l');
 
-        return start + " - " + end;
+        if(this.week === 0) {
+            return "Current Week " + start + " - " + end;
+        } else {
+            return "Week " + start + " - " + end;
+        }
     }
 
     private loadTransactions() {
@@ -50,13 +55,13 @@ export class BudgetPage extends MeteorComponent {
         }, {sort: {expiration: 1}}).zone();
     }
 
-    private decrementWeek() {
-        this.week -= 1;
+    private previousWeek() {
+        this.week += 1;
         this.loadTransactions();
     }
 
-    private incrementWeek() {
-        this.week += 1;
+    private nextWeek() {
+        this.week -= 1;
         this.loadTransactions();
     }
 
@@ -64,9 +69,6 @@ export class BudgetPage extends MeteorComponent {
         let start;
         let end;
         if(week > 0) {
-            start = moment().add(week, 'weeks').startOf('isoWeek').toDate();
-            end = moment().add(week, 'weeks').endOf('isoWeek').toDate();
-        } else if(week < 0) {
             start = moment().subtract(week, 'weeks').startOf('isoWeek').toDate();
             end = moment().subtract(week, 'weeks').endOf('isoWeek').toDate();
         } else {
