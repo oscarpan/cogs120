@@ -23,10 +23,10 @@
     </ion-list>
     <div *ngIf="creatingAccount === false">
       <button ion-button (click)="login()" [disabled]="isLoginFormValid() == false" block>Sign In</button>    
-      <button ion-button outline (click)="creatingAccount = true" block>Create a New Account</button>
+      <button ion-button clear small (click)="creatingAccount = true" block>New User? Create Account</button>
     </div>
     <div *ngIf="creatingAccount === true">
       <button ion-button (click)="createAccount()" [disabled]="isCreateAccountFormValid() == false" block>Create Account</button>
-      <button ion-button (click)="creatingAccount = false" outline block>Have an account? Sign in</button>
+      <button ion-button (click)="creatingAccount = false" clear small block>Have an account? Sign in</button>
     </div>
 </ion-content>
