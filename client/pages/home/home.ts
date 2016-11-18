@@ -1,4 +1,5 @@
 import {Page, NavController, ActionSheetController, ModalController} from 'ionic-angular';
+import { EditItemModalPage } from "../../components/modal/edititem";
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 import {WelcomeHeaderComponent} from '../../components/welcome-header/welcome-header';
@@ -43,6 +44,13 @@ export class HomePage extends MeteorComponent {
                         console.log('Trash it clicked');
                     }
                 },{
+                    text: 'Edit',
+                    handler: () => {
+                        this.editFoodItem(food);
+                        console.log("Edit clicked");
+                    }
+                },
+                {
                     text: 'Cancel',
                     role: 'cancel',
                     handler: () => {
@@ -58,6 +66,11 @@ export class HomePage extends MeteorComponent {
         this.autorun(() => {
             this.user = Meteor.user();
         });
+    }
+
+    editFoodItem(item):void {
+        let modal = this.modalCtrl.create(EditItemModalPage, {item:item});
+        modal.present();
     }
 
     addFoodItem():void {

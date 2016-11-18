@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Edit Item
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span color="primary" showWhen="ios">Cancel</span>
+                <ion-icon name="md-close-circle" hideWhen="ios"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="outer-content">
+    <ion-list>
+        <ion-item>
+            <ion-segment [(ngModel)]="type">
+                <ion-segment-button value="grocery">
+                    Grocery
+                </ion-segment-button>
+                <ion-segment-button value="restaurant">
+                    Restaurant
+                </ion-segment-button>
+            </ion-segment>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Food Name" type="text" [(ngModel)]="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Price (numbers only)" type="number" [(ngModel)]="price" required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="type == 'grocery'">
+            <ion-label>Expiration Date</ion-label>
+            <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="MMM DD YYYY" min="2016-11-01" max="2018-12-31" [(ngModel)]="expiration"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="type == 'grocery'">
+            <ion-segment [(ngModel)]="location">
+                <ion-segment-button value="Counter">
+                    Counter
+                </ion-segment-button>
+                <ion-segment-button value="Fridge">
+                    Refrigerator
+                </ion-segment-button>
+                <ion-segment-button value="Freezer">
+                    Freezer
+                </ion-segment-button>
+            </ion-segment>
+        </ion-item>
+        <ion-item>
+            <button ion-button full large (click)="editItem()" [disabled]="isFormValid() == false">Edit Item</button>
+        </ion-item>
+    </ion-list>
+</ion-content>
