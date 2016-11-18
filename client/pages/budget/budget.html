@@ -5,8 +5,11 @@
         </button>
         <ion-title>Budget</ion-title>
         <ion-buttons end (click)="setBudget()">
-            <button>Edit
+            <button *ngIf="variation == '1'">Edit
                 <ion-icon name="logo-usd"></ion-icon>
+            </button>
+            <button *ngIf="variation != '1'">
+                Edit Budget
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -40,7 +43,7 @@
             Food of Week
         </ion-list-header>
         <ion-item-sliding *ngFor="let food of foods | async">
-            <ion-item *ngFor="let food of foods | async">
+            <ion-item>
                 <ion-avatar item-left>
                     <img src="http://loremflickr.com/128/128/{{ food.name }}">
                 </ion-avatar>
@@ -74,4 +77,16 @@
             <ion-note item-right>{{ foods | pluckThenSum: "price" | currency:'USD':true:'1.2-2' }}</ion-note>
         </ion-item>
     </ion-list>
+
+    <button fab fab-right fab-bottom primary fab-fixed (click)="addFoodItem()" *ngIf="variation == '1'">
+        <ion-icon name="add"></ion-icon>
+    </button>
+
 </ion-content>
+<ion-footer *ngIf="variation != '1'">
+    <ion-toolbar>
+        <button ion-button full (click)="addFoodItem()">
+            <ion-icon name="add-circle"></ion-icon> Add Food Item
+        </button>
+    </ion-toolbar>
+</ion-footer>

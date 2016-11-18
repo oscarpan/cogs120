@@ -20,11 +20,16 @@ export class HomePage extends MeteorComponent {
     private user:Meteor.User;
     foods: Observable<any[]>;
 
+    private variation:string = "1";
+
     constructor(private nav:NavController, private translate:TranslateService, 
         public actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController, private toastCtrl:ToastController) {
         super();
 
         this.foods = Foods.find({ userId: Meteor.userId(), type: "grocery", status: "fresh" }, {sort: {expiration: 1}}).zone();
+
+        if(window.location.hash != "")
+            this.variation = window.location.hash.substr(1);
     }
 
     deleteFood(food){

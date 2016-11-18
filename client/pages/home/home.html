@@ -42,7 +42,14 @@
 
     </ion-list>
 
-    <button fab fab-right fab-bottom primary fab-fixed (click)="addFoodItem()">
+    <button fab fab-right fab-bottom primary fab-fixed (click)="addFoodItem()" *ngIf="variation == '1'">
         <ion-icon name="add"></ion-icon>
     </button>
 </ion-content>
+<ion-footer *ngIf="variation != '1'">
+    <ion-toolbar>
+        <button ion-button full (click)="addFoodItem()">
+            <ion-icon name="add-circle"></ion-icon> Add Food Item
+        </button>
+    </ion-toolbar>
+</ion-footer>
