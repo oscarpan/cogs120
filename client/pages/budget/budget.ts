@@ -18,7 +18,7 @@ export class BudgetPage extends MeteorComponent {
     private budget:number;
     private spent:number = 0;
 
-
+    private variation:string = "1";
     private weekLabel:string = "";
     private week:number = 0;
     foods: Observable<any[]>;
@@ -29,6 +29,10 @@ export class BudgetPage extends MeteorComponent {
                 public alertCtrl:AlertController) {
         super();
         this.loadTransactions();
+
+        if(window.location.hash != "")
+            this.variation = window.location.hash.substr(1);
+        console.log(window.location.hash);
     }
 
     private getWeekLabel():String {
@@ -37,11 +41,7 @@ export class BudgetPage extends MeteorComponent {
         let start = moment(range.start).format('l');
         let end = moment(range.end).format('l');
 
-        if(this.week === 0) {
-            return "Current Week " + start + " - " + end;
-        } else {
-            return "Week " + start + " - " + end;
-        }
+        return start + " - " + end;
     }
 
     private loadTransactions() {
