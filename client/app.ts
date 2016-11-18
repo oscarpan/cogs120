@@ -61,7 +61,7 @@ class MyApp extends MeteorComponent {
     ngOnInit():void {
 
         // set the nav menu title to the application name from settings.json
-        this.appName = 'TBA Food';
+        this.appName = 'à la carte';
 
         // set our app's pages
         // title references a key in the language JSON to be translated by the translate pipe in the HTML
