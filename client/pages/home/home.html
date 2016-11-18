@@ -29,6 +29,10 @@
                 </ion-note>
             </ion-item>
             <ion-item-options side="right">
+                <button ion-button color="secondary" (click)="editFoodItem(food)">
+                    <ion-icon name="create"></ion-icon>
+                    Edit
+                </button>
                 <button ion-button color="danger" (click)="deleteFood(food)">
                     <ion-icon name="trash"></ion-icon>
                     Delete

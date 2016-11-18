@@ -10,19 +10,34 @@
 <ion-content>
     <ion-list>
         <ion-list-header>History of Grocery Foods</ion-list-header>
-        <ion-item *ngFor="let food of foods | async">
-            <ion-avatar item-left>
-                <img src="http://loremflickr.com/128/128/{{ food.name }}">
-            </ion-avatar>
-            <h2>{{ food.name }}</h2>
-            <h3 *ngIf="food.type == 'grocery'">Location: {{ food.location }}</h3>
-            <p *ngIf="food.type == 'grocery'">This item was {{ food.status }}.</p>
-            <ion-note item-right>
-                <span *ngIf="(food.expiration | amDifference: today :'days') == 0">expires today</span>
-                <span *ngIf="(food.expiration | amDifference: today :'days') > 0">{{ food.expiration | amDifference: today :'days' }} days left</span>
-                <span *ngIf="(food.expiration | amDifference: today :'days') < 0">expired {{ today | amDifference: food.expiration :'days' }} days ago</span>
-            </ion-note>
-        </ion-item>
+
+        <ion-item-sliding *ngFor="let food of foods | async">
+            <ion-item>
+                <ion-avatar item-left>
+                    <img src="http://loremflickr.com/128/128/{{ food.name }}">
+                </ion-avatar>
+                <h2>{{ food.name }}</h2>
+                <h3 *ngIf="food.type == 'grocery'">Location: {{ food.location }}</h3>
+                <p *ngIf="food.type == 'grocery'">This item was {{ food.status }}.</p>
+                <ion-note item-right>
+                    <span *ngIf="(food.expiration | amDifference: today :'days') == 0">expires today</span>
+                    <span *ngIf="(food.expiration | amDifference: today :'days') > 0">{{ food.expiration | amDifference: today :'days' }} days left</span>
+                    <span *ngIf="(food.expiration | amDifference: today :'days') < 0">expired {{ today | amDifference: food.expiration :'days' }} days ago</span>
+                </ion-note>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="secondary" (click)="editFoodItem(food)">
+                    <ion-icon name="create"></ion-icon>
+                    Edit
+                </button>
+                <button ion-button color="danger" (click)="deleteFood(food)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+
         <ion-list-header>Stats</ion-list-header>
         <ion-item>
             <ion-icon name="cash" item-left></ion-icon>

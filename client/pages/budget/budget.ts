@@ -2,6 +2,7 @@ import {Page, NavController, ModalController, AlertController} from 'ionic-angul
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 import {AddItemModalPage} from '../../components/modal/additem';
+import { EditItemModalPage } from "../../components/modal/edititem";
 import {Foods} from "../../../lib/collections/Foods";
 import { Observable } from 'rxjs/Observable';
 var moment = require('moment/moment');
@@ -150,5 +151,14 @@ export class BudgetPage extends MeteorComponent {
     addFoodItem():void {
         let modal = this.modalCtrl.create(AddItemModalPage);
         modal.present();
+    }
+
+    editFoodItem(item):void {
+        let modal = this.modalCtrl.create(EditItemModalPage, {item:item});
+        modal.present();
+    }
+
+    deleteFood(food){
+        Foods.remove(food._id);
     }
 }

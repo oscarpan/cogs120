@@ -39,13 +39,28 @@
         <ion-list-header>
             Food of Week
         </ion-list-header>
-        <ion-item *ngFor="let food of foods | async">
-            <ion-avatar item-left>
-                <img src="http://loremflickr.com/128/128/{{ food.name }}">
-            </ion-avatar>
-            <h2>{{ food.name }}</h2>
-            <ion-note item-right>${{ food.price }}</ion-note>
-        </ion-item>
+        <ion-item-sliding *ngFor="let food of foods | async">
+            <ion-item *ngFor="let food of foods | async">
+                <ion-avatar item-left>
+                    <img src="http://loremflickr.com/128/128/{{ food.name }}">
+                </ion-avatar>
+                <h2>{{ food.name }}</h2>
+                <ion-note item-right>${{ food.price }}</ion-note>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="secondary" (click)="editFoodItem(food)">
+                    <ion-icon name="create"></ion-icon>
+                    Edit
+                </button>
+                <button ion-button color="danger" (click)="deleteFood(food)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+
+
 
         <ion-list-header>Stats</ion-list-header>
         <ion-item>
