@@ -1,4 +1,4 @@
-import {Page, NavController, ActionSheetController, ModalController} from 'ionic-angular';
+import {Page, NavController, ActionSheetController, ModalController, ToastController} from 'ionic-angular';
 import { EditItemModalPage } from "../../components/modal/edititem";
 import {MeteorComponent} from 'angular2-meteor';
 import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
@@ -20,7 +20,8 @@ export class HomePage extends MeteorComponent {
     private user:Meteor.User;
     foods: Observable<any[]>;
 
-    constructor(private nav:NavController, private translate:TranslateService, public actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController) {
+    constructor(private nav:NavController, private translate:TranslateService, 
+        public actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController, private toastCtrl:ToastController) {
         super();
 
         this.foods = Foods.find({ userId: Meteor.userId(), type: "grocery", status: "fresh" }, {sort: {expiration: 1}}).zone();
@@ -74,11 +75,31 @@ export class HomePage extends MeteorComponent {
 
     editFoodItem(item):void {
         let modal = this.modalCtrl.create(EditItemModalPage, {item:item});
+        modal.onDidDismiss(data => {
+            if(data.success) {
+                let toast = this.toastCtrl.create({
+                                message: data.toastMsg,
+                                duration: 3000,
+                                position: 'top'
+                            });
+                toast.present();
+            }
+        });
         modal.present();
     }
 
     addFoodItem():void {
         let modal = this.modalCtrl.create(AddItemModalPage);
+        modal.onDidDismiss(data => {
+            if(data.success) {
+                let toast = this.toastCtrl.create({
+                                message: data.toastMsg,
+                                duration: 5000,
+                                position: 'top'
+                            });
+                toast.present();
+            }
+        });
         modal.present();
     }
 }

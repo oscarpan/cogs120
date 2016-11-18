@@ -32,7 +32,7 @@ export class AddItemModalPage {
             status: 'fresh',
             createdAt: new Date().valueOf(),
         })
-        this.dismiss()
+        this.dismiss(true)
     }
 
     isFormValid():boolean {
@@ -41,7 +41,16 @@ export class AddItemModalPage {
         return nameValid && priceValid;
     }
 
-    dismiss() {
-        this.viewCtrl.dismiss();
+    dismiss(success?:boolean) {
+        let groceryMsg = "Successfully added " + this.name + " to your grocery list!";
+        let restMsg = "Successfully added " + this.name + " to your budget. Check your budget page to see!"
+        if(success)
+            this.viewCtrl.dismiss({
+                success: true,
+                toastMsg: (this.type === 'grocery' ? groceryMsg : restMsg)
+            });
+        else {
+            this.viewCtrl.dismiss();
+        }
     }
 }

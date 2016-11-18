@@ -35,7 +35,7 @@ export class EditItemModalPage {
         this.item.price = this.price;
         this.item.expiration = this.expiration;
         Foods.update({_id: this.item._id}, this.item);
-        this.viewCtrl.dismiss();
+        this.dismiss(true);
     }
 
     isFormValid():boolean {
@@ -44,7 +44,14 @@ export class EditItemModalPage {
         return nameValid && priceValid;
     }
 
-    dismiss() {
-        this.viewCtrl.dismiss();
+    dismiss(success?:boolean) {
+        if(success)
+            this.viewCtrl.dismiss({
+                success: true,
+                toastMsg: "Successfully edited item: " + this.name
+            });
+        else {
+            this.viewCtrl.dismiss();
+        }
     }
 }
