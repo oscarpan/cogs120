@@ -25,6 +25,10 @@ export class HomePage extends MeteorComponent {
         this.foods = Foods.find({ userId: Meteor.userId(), type: "grocery", status: "fresh" }, {sort: {expiration: 1}}).zone();
     }
 
+    deleteFood(food){
+        Foods.remove(food._id);
+    }
+
     presentActionSheet(food) {
         let actionSheet = this.actionSheetCtrl.create({
             title: 'Food Actions',
