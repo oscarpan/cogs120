@@ -28,7 +28,7 @@
             </ion-col>
         </ion-row>
         <ion-row center>
-            <ion-col (click)="setBudget()" width-100 style="font-size:48px; text-align:center; font-weight:lighter;">${{budget - (foods | pluckThenSum: "price")}}</ion-col>
+            <ion-col (click)="setBudget()" width-100 style="font-size:48px; text-align:center; font-weight:lighter;">{{ (budget - (foods | pluckThenSum: "price")) | currency:'USD':true:'1.2-2' }}</ion-col>
         </ion-row>
         <ion-row>
             
@@ -70,8 +70,8 @@
         </ion-item>
         <ion-item>
             <ion-icon name="cash" item-left></ion-icon>
-            Spent on Food
-            <ion-note item-right>${{ foods | pluckThenSum: "price" }}</ion-note>
+            Spent on Foods
+            <ion-note item-right>{{ foods | pluckThenSum: "price" | currency:'USD':true:'1.2-2' }}</ion-note>
         </ion-item>
     </ion-list>
 </ion-content>
