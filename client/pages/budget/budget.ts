@@ -100,6 +100,8 @@ export class BudgetPage extends MeteorComponent {
     }
 
     setBudget() {
+        // Google Tracking
+        ga('send', 'event', 'editbudget', 'click');
         if(this.budgetPromptOpen == true) {
             return;
         }
