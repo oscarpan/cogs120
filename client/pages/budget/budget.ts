@@ -30,9 +30,9 @@ export class BudgetPage extends MeteorComponent {
         super();
         this.loadTransactions();
 
-        if(window.location.hash != "")
-            this.variation = window.location.hash.substr(1);
-        console.log(window.location.hash);
+        if(window.location.pathname != "/")
+            this.variation = window.location.pathname.substr(1);
+        console.log(window.location.pathname);
     }
 
     private getWeekLabel():String {
