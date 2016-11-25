@@ -28,7 +28,7 @@ export class HomePage extends MeteorComponent {
 
         this.foods = Foods.find({ userId: Meteor.userId(), type: "grocery", status: "fresh" }, {sort: {expiration: 1}}).zone();
 
-        if(window.location.pathname != "")
+        if(window.location.pathname != "/")
             this.variation = window.location.pathname.substr(1);
     }
 
