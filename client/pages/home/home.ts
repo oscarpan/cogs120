@@ -28,8 +28,8 @@ export class HomePage extends MeteorComponent {
 
         this.foods = Foods.find({ userId: Meteor.userId(), type: "grocery", status: "fresh" }, {sort: {expiration: 1}}).zone();
 
-        if(window.location.hash != "")
-            this.variation = window.location.hash.substr(1);
+        if(window.location.pathname != "")
+            this.variation = window.location.pathname.substr(1);
     }
 
     deleteFood(food){
