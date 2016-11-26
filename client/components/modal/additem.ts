@@ -32,6 +32,7 @@ export class AddItemModalPage {
             status: 'fresh',
             createdAt: new Date().valueOf(),
         })
+        ga('send', 'event', 'addFoodItem', 'add');
         this.dismiss(true)
     }
 
@@ -50,6 +51,7 @@ export class AddItemModalPage {
                 toastMsg: (this.type === 'grocery' ? groceryMsg : restMsg)
             });
         else {
+            ga('send', 'event', 'addFoodItem', 'cancel');
             this.viewCtrl.dismiss();
         }
     }

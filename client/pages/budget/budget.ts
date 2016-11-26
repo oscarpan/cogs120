@@ -117,6 +117,7 @@ export class BudgetPage extends MeteorComponent {
                 {
                     text: 'Save',
                     handler: data => {
+                        ga('send', 'event', 'editbudget', 'save');
                         let num = Number(data.dollars);
                         console.log(num);
                         if(num <= 0) {
@@ -131,6 +132,7 @@ export class BudgetPage extends MeteorComponent {
         });
         prompt.onDidDismiss(() => {
             this.budgetPromptOpen = false;
+            ga('send', 'event', 'editbudget', 'cancel');
         })
         this.budgetPromptOpen = true;
         prompt.present();
@@ -153,6 +155,7 @@ export class BudgetPage extends MeteorComponent {
     addFoodItem():void {
         let modal = this.modalCtrl.create(AddItemModalPage);
         modal.present();
+        ga('send', 'event', 'addFoodItem', 'open');
     }
 
     editFoodItem(item):void {
