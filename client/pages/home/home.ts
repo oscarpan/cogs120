@@ -54,13 +54,6 @@ export class HomePage extends MeteorComponent {
                         console.log('Trash it clicked');
                     }
                 },{
-                    text: 'Edit',
-                    handler: () => {
-                        this.editFoodItem(food);
-                        console.log("Edit clicked");
-                    }
-                },
-                {
                     text: 'Cancel',
                     role: 'cancel',
                     handler: () => {
